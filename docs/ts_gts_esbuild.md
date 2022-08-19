@@ -255,4 +255,4 @@ But you just need to do the gts init within the repos and adjust some path param
 [npm]: https://docs.npmjs.com/about-npm
 [npx]: https://www.npmjs.com/package/npx
 [eslint]: https://github.com/eslint/eslint
-[example]: https://github.com/AndreasAugustin/teaching/examples/ts_gts_esbuild/
+[example]: https://github.com/AndreasAugustin/teaching/tree/main/examples/ts_gts_esbuild
