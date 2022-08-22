@@ -11,3 +11,4 @@ Some content for teaching purposes.
 ## Working with git
 
 - [GIT - Share secrets](git/git_crypt.md)
+- [GIT - multi user](git/git_multi_user.md)
