@@ -47,7 +47,6 @@ ssh-keygen -t rsa -N "" -C "<second_user_mail>" -f '~/.ssh/id_rsa_second'
 ```
 
 To be able to ssh into the git provider, you need to add the private keys to your git provider settings.
-Add the public key content to related gitea account
 
 ```bash
 cat ~/.ssh/id_rsa_first.pub
