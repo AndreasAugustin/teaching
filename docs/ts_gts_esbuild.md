@@ -247,6 +247,8 @@ There are lots of pros related to this project setup. But of course there are al
 One of them is that gts is out of the box not properly working with [npm workspaces][npm-workspaces] yet [gts issue][gts-issue].
 But you just need to do the gts init within the repos and adjust some path parameters in some files.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A4EKB66)
+
 [gts]: https://github.com/google/gts
 [gts-issue]: https://github.com/google/gts/issues/718
 [npm-workspaces]: https://docs.npmjs.com/cli/v8/using-npm/workspaces

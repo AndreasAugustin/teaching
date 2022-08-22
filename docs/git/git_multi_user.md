@@ -95,4 +95,6 @@ Yay it works :rocket:
 
 As you can see when that the right user is auto selected :rocket:
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A4EKB66)
+
 [ssh-config]: https://linux.die.net/man/5/ssh_config

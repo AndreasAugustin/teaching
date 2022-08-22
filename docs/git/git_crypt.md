@@ -186,5 +186,7 @@ git-crypt add-gpg-user <USER_ID>
 
 Now the other user is able to decrypt the file with git-crypt in the git repository :rocket:
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A4EKB66)
+
 [git-crypt]: https://github.com/AGWA/git-crypt
 [git-crypt-install]: https://github.com/AGWA/git-crypt/blob/master/INSTALL.md
