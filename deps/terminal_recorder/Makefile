@@ -5,6 +5,9 @@ SHELL := /bin/bash
 # VARIABLES
 ###########################
 
+MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+MKFILE_DIR := $(dir $(MKFILE_PATH))
+
 RECORD_FILE_NAME := demo.cast
 GIF_FILE_NAME := out.gif
 
@@ -22,12 +25,12 @@ help:  ## help target to show available commands with information
 
 .PHONY: record
 record:  ## Record the terminal
-	asciinema rec records/${RECORD_FILE_NAME}
+	asciinema rec ${MKFILE_DIR}/records/${RECORD_FILE_NAME}
 
 .PHONY: play
 play:  ## play the record
-	asciinema play records/${RECORD_FILE_NAME}
+	asciinema play ${MKFILE_DIR}/records/${RECORD_FILE_NAME}
 
 .PHONY: render
 render:  ## render the record to GIF
-	./asciinema/target/release/agg records/${RECORD_FILE_NAME} outputs/${GIF_FILE_NAME}
+	${MKFILE_DIR}/asciinema/target/release/agg ${MKFILE_DIR}/records/${RECORD_FILE_NAME} ${MKFILE_DIR}/outputs/${GIF_FILE_NAME}
