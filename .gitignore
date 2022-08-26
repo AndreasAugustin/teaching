@@ -1,4 +1,4 @@
 node_modules/
 .venv/
-records/
-outputs/*
+# records/
+outputs/

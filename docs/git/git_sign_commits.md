@@ -51,10 +51,14 @@ git config --global user.email
 You can see that those differ. This does not give us any value for our current context,
 but I wanted to make sure that we do not touch our global settings.
 
-Now lets create some commits.
+Now lets create a commit commits.
 
 ```bash
 echo "# git sign commits" >> README.md
 git add .
 git commit -m "doc(): add some super nice docs"
+```
+
+```bash
+
 ```
