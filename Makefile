@@ -5,6 +5,8 @@ SHELL := /bin/bash
 # VARIABLES
 ###########################
 
+RECORD_FILE_NAME := demo
+
 ###########################
 # MAPPINGS
 ###########################
@@ -29,3 +31,15 @@ zsh: ## open dev container with build environment
 .PHONY: prune
 prune: ## delete the whole environment
 	docker-compose down -v --rmi all --remove-orphans
+
+.PHONY: play
+play:
+	npx terminalizer play ${RECORD_FILE_NAME}
+
+.PHONY: record
+record:
+	npx terminalizer record ${RECORD_FILE_NAME}
+
+.PHONY: render
+render:
+	npx terminalizer render ${RECORD_FILE_NAME} -o tmp.gif

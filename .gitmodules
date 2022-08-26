@@ -1,0 +1,3 @@
+[submodule "deps/asciinema"]
+	path = deps/asciinema
+	url = git@github.com:asciinema/agg.git

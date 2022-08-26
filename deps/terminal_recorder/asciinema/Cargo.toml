@@ -1,0 +1,24 @@
+[package]
+name = "agg"
+version = "1.2.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1"
+clap = { version = "3.2.15", features = ["derive"] }
+env_logger = "0.9"
+fontdb = "0.9"
+fontdue = "0.7"
+gifski = "1"
+imgref = "1"
+log = "0.4"
+reqwest = { version = "0.11.11", default-features = false, features = ["blocking", "rustls-tls", "gzip"] }
+resvg = "0.23"
+rgb = "0.8"
+serde = { version = "1.0.137", features = ["derive"] }
+serde_json = "1.0.81"
+tiny-skia = "0.6"
+usvg = { version = "0.23", features = ["text"] }
+vt = { git = "https://github.com/asciinema/vt-rs.git" }
