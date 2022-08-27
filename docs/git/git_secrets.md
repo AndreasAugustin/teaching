@@ -1,4 +1,4 @@
-# GIT - Pretend exidentaly pushing git credentials
+# GIT - Pretend accidentaly pushing credentials
 
 ## abstract
 
