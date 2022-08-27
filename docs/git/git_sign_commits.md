@@ -105,10 +105,8 @@ Follow the Dialog nd save with **O**.
 Now lets grab the Key-id and add it to the git config
 
 ```bash
-$ gpg --list-key $(git config user.email)
-
-$ git config [--global] user.signingkey <key_id>
-
+gpg --list-key $(git config user.email)
+git config [--global] user.signingkey <key_id>
 ```
 
 Now you are able to sign your commits with the **-S** flag or you add it to the git settings to make it default behaviour.
@@ -134,6 +132,8 @@ You should now also add the key to your git provider settings so that the git pr
 
 - [github sign commits][gh-sign-commits]
 - [git sign commits][git-sign-commits]
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A4EKB66)
 
 [I-deleted-linux]: https://github.com/slimsag/linux/tree/5895e21f3c744ed9829e3afe9691e3eb1b1932ae#linux-kernel
 [gh-sign-commits]: https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits

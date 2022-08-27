@@ -33,4 +33,7 @@ play:  ## play the record
 
 .PHONY: render
 render:  ## render the record to GIF
-	${MKFILE_DIR}/asciinema/target/release/agg ${MKFILE_DIR}/records/${RECORD_FILE_NAME} ${MKFILE_DIR}/outputs/${GIF_FILE_NAME}
+	${MKFILE_DIR}/asciinema/target/release/agg \
+		--font-size 20 \
+		${MKFILE_DIR}/records/${RECORD_FILE_NAME} \
+		${MKFILE_DIR}/outputs/${GIF_FILE_NAME}
