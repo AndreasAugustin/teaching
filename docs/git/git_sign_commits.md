@@ -6,7 +6,8 @@ You should always sign your git commits. [Why?](#why-to-sign-commits)
 
 ## Why to sign commits
 
-The git commits are super easy referenced to a user. Anyone all around the world is able to push commits with another name. The reference is done in the commit message with the **user.email**.
+The git commits are super easy referenced to a user. Anyone all around the world is able to push commits with another name.
+The reference is done in the commit message with the **user.email**.
 
 You can try yourself. Just create a new repository in a folder of your choice.
 
@@ -78,12 +79,15 @@ git log
 ![second-commit](../assets/git/git_sign_commits/second_commit.gif)
 
 You can see that the second commit is assigned to **fake me** with mail address **fake.me@fake.me**.
-If you are using github.com as your git provider and push the commit and also the mail address fake.me@fake.me is registered to an existing user, the commit will be assigned to that user.
+If you are using github.com as your git provider and push the commit and also the mail address fake.me@fake.me
+is registered to an existing user, the commit will be assigned to that user.
 
 As you can see it is super easy to make commits in names of other persons.
 Like an example? Here is a prank of a fake Linus Torvalds stating that [linux is deleted][I-deleted-linux].
 
-As you can imagine there are not only pranks. This is a security issue. Imagine you are working in a team on a open source project on github. A teammate (who is a fake) is opening a pull request. You know that the original team mate is a great coder and you don't check in detail the changes and merge them into your main branch. This is obviously an attack vector. How to prevent? **start signing your commits today**
+As you can imagine there are not only pranks. This is a security issue. Imagine you are working in a team on a open source project on github.
+A teammate (who is a fake) is opening a pull request. You know that the original team mate is a great coder and you don't check in detail the
+changes and merge them into your main branch. This is obviously an attack vector. How to prevent? **start signing your commits today**
 
 ## How to sign commits
 

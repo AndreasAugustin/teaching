@@ -155,7 +155,8 @@ npx esbuild src/index.ts
 The output is the bundled file.
 
 You can pass lots of options to the cli interface.
-*However, using the command-line interface can become unwieldy if you need to pass many options to esbuild. For more sophisticated uses you will likely want to write a build script in JavaScript using esbuild's JavaScript API.*
+*However, using the command-line interface can become unwieldy if you need to pass many options to esbuild.
+For more sophisticated uses you will likely want to write a build script in JavaScript using esbuild's JavaScript API.*
 
 We will do that now.
 Lets create a small nodejs binary.
@@ -196,7 +197,8 @@ node bin/esbuild.mjs
 
 As you can see the bundled package is built.
 
-Now we can add a new npm script. Please add a new script within the script part in **package.json**. Because in addition we want to create the types we also add `npx tsc --emitDeclarationOnly --outDir dist/types`
+Now we can add a new npm script. Please add a new script within the script part in **package.json**.
+Because in addition we want to create the types we also add `npx tsc --emitDeclarationOnly --outDir dist/types`
 
 ```json
 ...

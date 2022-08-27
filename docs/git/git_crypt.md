@@ -5,7 +5,9 @@
 In some cases you want to securely share secrets with other teammates. Furthermore you want to have a history of those secrets.
 For this purpose [Git crypt][git-crypt] helps you to handle secrets within your git repository.
 
-*git-crypt enables transparent encryption and decryption of files in a git repository. Files which you choose to protect are encrypted when committed, and decrypted when checked out. git-crypt lets you freely share a repository containing a mix of public and private content.*
+*git-crypt enables transparent encryption and decryption of files in a git repository.
+Files which you choose to protect are encrypted when committed, and decrypted when checked out.
+git-crypt lets you freely share a repository containing a mix of public and private content.*
 
 Some features
 
@@ -61,7 +63,8 @@ gpg --gen-key
 
 ### git-crypt
 
-We need to have a git repository available. Please create a repository with name **git-crypt-test** in your favourite Git provider (e.q. GitHub, GitLab, Gitea, ...).
+We need to have a git repository available. Please create a repository with name **git-crypt-test** in your favourite
+git provider (e.q. GitHub, GitLab, Gitea, ...).
 Please clone the repository and `cd` into it.
 
 ```bash

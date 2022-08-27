@@ -2,8 +2,10 @@
 
 ## abstract
 
-Sometimes by accident people accidentally push credentials or other sensitive information into a git repository. For example **AWS_SECRET_ACCESS_KEY** and **AWS_ACCESS_KEY_ID**.
-Obviously bad people are able to find those secrets in the git repository or history using them to e.q. start cryptominers in those accounts. That leads to super high costs and bills for the poor person who accidentally pushed those secrets.
+Sometimes by accident people accidentally push credentials or other sensitive information into a git repository.
+For example **AWS_SECRET_ACCESS_KEY** and **AWS_ACCESS_KEY_ID**.
+Obviously bad people are able to find those secrets in the git repository or history using them to e.q. start cryptominers
+in those accounts. That leads to super high costs and bills for the poor person who accidentally pushed those secrets.
 There is a tool which can prevent you doing such mistakes: [git-secrets][git-secrets]
 
 ## Installation
@@ -48,7 +50,8 @@ git commit [-S] -m "doc(): initial commit :star:"
 git-secrets --install
 ```
 
-As stated in the output we got 3 new files added into our local git repository. Those will prevent us to accidentally commit secrets to the git database. Lets check one of those files
+As stated in the output we got 3 new files added into our local git repository.
+Those will prevent us to accidentally commit secrets to the git database. Lets check one of those files
 
 ```bash
 $ cat .git/hooks/pre-commit
@@ -56,11 +59,13 @@ $ cat .git/hooks/pre-commit
 git secrets --pre_commit_hook -- "$@"
 ```
 
-This hook will be run every time in the **local git repo** before the commit is added to the database. This means if the mentioned command will have an error, the commit won't be added to the local database.
+This hook will be run every time in the **local git repo** before the commit is added to the database.
+This means if the mentioned command will have an error, the commit won't be added to the local database.
 
 ![init](../assets/git/git_secrets/init.gif)
 
-Now lets understand some more details. For that we will add some fake AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY into our markdown file and lets try to commit it.
+Now lets understand some more details. For that we will add some fake AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+into our markdown file and lets try to commit it.
 Those keys are really fake, you can try :smiling_imp:
 
 ```bash
