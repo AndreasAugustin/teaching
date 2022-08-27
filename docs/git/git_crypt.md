@@ -17,7 +17,6 @@ Some features
 
 First we need to install git-crypt
 
-**Remark** for details please check [install instructions][git-crypt-install] to install git-crpyt.
 We need `make` for the installation.
 Please clone the [repo][git-crypt] and use the following commands.
 Please `cd` in a temporary directory first.
@@ -28,6 +27,12 @@ cd git-crypt
 make
 make install
 ```
+
+### Remarks
+
+- for details please check [install instructions][git-crypt-install] to install git-crpyt.
+- For users with docker knowledge: have prepared a [docker image][git-secrets-docker] where git-secret is already installed.
+  - `docker run -v <local_git_repo>:/home/git-secrets/ andyaugustin/git-secrets:main git-crypt`
 
 ## Setup
 
