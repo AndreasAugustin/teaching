@@ -31,7 +31,7 @@ make install
 ### Remarks
 
 - for details please check [install instructions][git-crypt-install] to install git-crpyt.
-- For users with docker knowledge: have prepared a [docker image][git-secrets-docker] where git-secret is already installed.
+- For users with docker knowledge: have prepared a [docker image][git-crypt-docker] where git-secret is already installed.
   - `docker run -v <local_git_repo>:/home/git-secrets/ andyaugustin/git-secrets:main git-crypt`
 
 ## Setup
@@ -195,3 +195,4 @@ Now the other user is able to decrypt the file with git-crypt in the git reposit
 
 [git-crypt]: https://github.com/AGWA/git-crypt
 [git-crypt-install]: https://github.com/AGWA/git-crypt/blob/master/INSTALL.md
+[git-crypt-docker]: https://hub.docker.com/repository/docker/andyaugustin/git-crypt
