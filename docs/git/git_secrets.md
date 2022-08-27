@@ -1,4 +1,4 @@
-# GIT - Pretend accidentaly pushing credentials
+# GIT - Prevent accidentaly pushing credentials
 
 ## abstract
 
