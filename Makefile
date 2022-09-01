@@ -5,8 +5,6 @@ SHELL := /bin/bash
 # VARIABLES
 ###########################
 
-RECORD_FILE_NAME := demo
-
 ###########################
 # MAPPINGS
 ###########################
@@ -21,7 +19,8 @@ help:  ## help target to show available commands with information
 
 .PHONY: markdownlint
 markdownlint: ## Validate markdown files
-	docker-compose run docs markdownlint .
+	docker-compose run docs markdownlint .github/ --ignore node_modules
+	docker-compose run docs markdownlint . --ignore node_modules
 
 .PHONY: zsh
 zsh: ## open dev container with build environment
