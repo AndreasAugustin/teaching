@@ -80,7 +80,6 @@ Intents are a way to manage flows with examples. As mentioned before **AI** will
   - `I want to sell things`
 ![lex sell intent](../assets/aws/lex/5_4_lex_sell_intent.png)
 - add initial response `Okay, lets make some money`
-![lex sell intent](../assets/aws/lex/5_5_lex_sell_intent.png)
 - leave Slots empty (will be covered later)
 ![lex sell intent](../assets/aws/lex/5_6_lex_sell_intent.png)
 - save, build, test with Inspect
@@ -155,6 +154,34 @@ To make Intents immutable you are able to create versions. This helps a lot if y
 
 When you want to change the content of the intent, you need to switch to `Draft version`
 
+## Attach lambda function
+
+*This section describes how to attach a Lambda function to a bot alias and the structure of the event data that Amazon Lex V2 provides to a Lambda function. Use this information to parse the input to your Lambda code. It also explains the format of the response that Amazon Lex V2 expects your Lambda function to return.
+
+Amazon Lex V2 uses one Lambda function per bot alias per language instead of one Lambda function for each intent. To use an individual function for each intent, the Lambda function router section provides a function that you can use.
+
+You can use Lambda functions at the following points in a conversation with a user:
+
+Before the conversation starts. For example, after telling the user the recognized intent.
+
+After eliciting a slot value from the user. For example, after the user tells the bot the size of pizza they want to order.
+
+Between each retry for eliciting a slot. For example, if the customer doesn't use a recognized pizza size.
+
+When confirming an intent. For example, when confirming a pizza order.
+
+To fulfill an intent. For example, to place an order for a pizza.
+
+After the intent has been fulfilled. For example, to switch to an intent to order a drink.*[^lex-using-lambda]
+
+- ![lex using lambda](../assets/aws/lex/9_1_lex_lambda.png)
+- ![lex using lambda](../assets/aws/lex/9_2_lex_lambda.png)
+- ![lex using lambda](../assets/aws/lex/9_3_lex_lambda.png)
+- ![lex using lambda](../assets/aws/lex/9_4_lex_lambda.png)
+- ![lex using lambda](../assets/aws/lex/9_5_lex_lambda.png)
+- ![lex using lambda](../assets/aws/lex/9_6_lex_lambda.png)
+- ![lex using lambda](../assets/aws/lex/9_7_lex_lambda.png)
+
 ## Literatur
 
 [cloudformation][lex-cloudformation]
@@ -162,6 +189,7 @@ When you want to change the content of the intent, you need to switch to `Draft 
 
 [^lex-what-is]: https://docs.aws.amazon.com/lex/latest/dg/what-is.html
 [^lex-custom-slots]: https://docs.aws.amazon.com/lex/latest/dg/howitworks-custom-slots.html
+[^lex-using-lambda]: https://docs.aws.amazon.com/lexv2/latest/dg/lambda.html
 
 [lex-cloudformation]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Lex.html
 [lex-integrate-with-website]: https://docs.aws.amazon.com/lex/latest/dg/ex-web.html
