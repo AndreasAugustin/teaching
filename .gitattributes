@@ -1,0 +1,11 @@
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+
+
+* text=auto eol=lf
+
+*.md text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.gif binary
+*.png binary
