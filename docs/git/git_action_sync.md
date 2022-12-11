@@ -1,4 +1,4 @@
-# GitHub Tactions-template-sync
+# GitHub actions-template-sync
 
 ## abstract
 
@@ -10,7 +10,7 @@ git pull "${SOURCE_REPO}" --allow-unrelated-histories
 ```
 
 in the target repository.
-Often there are many repositories you want to synchronise. E.q. you have created your repositories using a GitHub template repository.
+Often there are many repositories you want to synchronize. E.q. you have created your repositories using a GitHub template repository.
 Click the links to get some more information about how to [create][create-template-repo] and [use][use-template-repo] template repositories.
 When you are making changes within the template repository often like to propagate those changes into the repositories created from the template.
 To automate this task I created a Github action [acions-template-sync][actions-template-sync]
@@ -116,6 +116,8 @@ Add the public key as a deployment key into the source repository.
 ![source_repo_click_deploy_key](../assets/git/git_actions_sync/source_repo_click_deploy_key.png)
 
 - Give it a meaningful name. No need to add write permissions. Paste here your **public ssh key**
+
+![source_repo_add_depl_key](../assets/git/git_actions_sync/source_repo_add_depl_key.png)
 
 #### Prepare the action
 
