@@ -14,3 +14,4 @@ Some content for teaching purposes.
 - [GIT - multi user](git/git_multi_user.md)
 - [GIT - how and why to sign commits](git/git_sign_commits.md)
 - [GIT - secrets how to prevent commit passwords](git/git_secrets.md)
+- [GIT - actions-template-sync](git/git_action_sync.md)
