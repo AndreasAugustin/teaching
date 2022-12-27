@@ -2,7 +2,6 @@ name: gh-pages-mk-docs
 on:
   push:
     branches:
-      - feat/mk_docs
       - main
 permissions:
   contents: write
