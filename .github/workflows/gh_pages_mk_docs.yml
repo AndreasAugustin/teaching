@@ -1,0 +1,28 @@
+name: gh-pages-mk-docs
+on:
+  push:
+    branches:
+      - feat/mk_docs
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: 'true'
+      -
+        name: python-setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      -
+        name: pip-install
+        run: pip install mkdocs-material
+      -
+        name: mkdocs
+        run: mkdocs gh-deploy --force
