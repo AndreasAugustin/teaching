@@ -14,7 +14,8 @@ Often there are many repositories you want to synchronize. E.q. you have created
 Click the links to get some more information about how to [create][create-template-repo] and [use][use-template-repo] template repositories.
 When you are making changes within the template repository often like to propagate those changes into the repositories created from the template.
 To automate this task I created a Github action [acions-template-sync][actions-template-sync]
-Instead of looping through all repositories and execute the commands listed above you can configure the [actions-template-sync][actions-template-sync] and receive automatically Pull requests within the target repositories.
+Instead of looping through all repositories and execute the commands listed above you can configure the [actions-template-sync][actions-template-sync]
+and receive automatically Pull requests within the target repositories.
 
 ### Remarks
 
