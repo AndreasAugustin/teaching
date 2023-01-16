@@ -1,7 +1,7 @@
 #######################################
 # image for dev build environment
 ######################################
-FROM alpine:3.17.0 as DEV
+FROM alpine:3.17.1 as DEV
 # install packages
 RUN apk add --update --no-cache bash make git zsh curl tmux
 
