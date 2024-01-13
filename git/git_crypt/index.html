@@ -1,0 +1,786 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../git_action_sync/">
+      
+      
+        <link rel="next" href="../git_multi_user/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Git - share secrets - teaching</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-share-secrets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="teaching" class="md-header__button md-logo" aria-label="teaching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            teaching
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git - share secrets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="teaching" class="md-nav__button md-logo" aria-label="teaching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    teaching
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teaching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ts_gts_esbuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Typescript project with gts and esbuild
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_action_sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub actions-template-sync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Git - share secrets
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Git - share secrets
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remarks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpg" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-crypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      git-crypt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-users-to-git-crypt-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add users to git-crypt database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_multi_user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GIT - multi user
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GIT - Prevent accidentaly pushing credentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_sign_commits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git - how and why sign commits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remarks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpg" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-crypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      git-crypt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-users-to-git-crypt-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add users to git-crypt database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="git-share-secrets">Git - share secrets</h1>
+<h2 id="abstract">Abstract</h2>
+<p>In some cases you want to securely share secrets with other teammates. Furthermore you want to have a history of those secrets.
+For this purpose <a href="https://github.com/AGWA/git-crypt">Git crypt</a> helps you to handle secrets within your git repository.</p>
+<p><em>git-crypt enables transparent encryption and decryption of files in a git repository.
+Files which you choose to protect are encrypted when committed, and decrypted when checked out.
+git-crypt lets you freely share a repository containing a mix of public and private content.</em></p>
+<p>Some features</p>
+<ul>
+<li>No accidentaly push secrets in clear text</li>
+<li>Possible to Share credentials</li>
+<li>Put credentials into version control</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>First we need to install git-crypt</p>
+<p>We need <code>make</code> for the installation.
+Please clone the <a href="https://github.com/AGWA/git-crypt">repo</a> and use the following commands.
+Please <code>cd</code> in a temporary directory first.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:AGWA/git-crypt.git
+<span class="nb">cd</span><span class="w"> </span>git-crypt
+make
+make<span class="w"> </span>install
+</code></pre></div>
+<h3 id="remarks">Remarks</h3>
+<ul>
+<li>for details please check <a href="https://github.com/AGWA/git-crypt/blob/master/INSTALL.md">install instructions</a> to install git-crpyt.</li>
+<li>For users with docker knowledge: have prepared a <a href="https://hub.docker.com/repository/docker/andyaugustin/git-crypt">docker image</a> where git-secret is already installed.</li>
+<li><code>docker run -v &lt;local_git_repo&gt;:/home/git-secrets/ andyaugustin/git-secrets:main git-crypt</code></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<h3 id="gpg">GPG</h3>
+<p>We need a key-pair (maybe in reality it is already created for your mail adress)
+Use the mail adress which is added to your git user</p>
+<p>First we want to check those settings</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email
+john.doe@dummy.fake
+$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name
+John<span class="w"> </span>Doe
+</code></pre></div>
+<p>keep those entries in your mind or write them down :evil_imp:</p>
+<p>Now we want to generate the gpg key.
+Type in the name and mail you just received.</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--gen-key
+</code></pre></div>
+<h3 id="git-crypt">git-crypt</h3>
+<p>We need to have a git repository available. Please create a repository with name <strong>git-crypt-test</strong> in your favourite
+git provider (e.q. GitHub, GitLab, Gitea, ...).
+Please clone the repository and <code>cd</code> into it.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;use_your_repo_url&gt;/git-crypt-test
+<span class="nb">cd</span><span class="w"> </span>git-crypt-test
+</code></pre></div>
+<p>Now we need to init <strong>git-crypt</strong></p>
+<div class="highlight"><pre><span></span><code>git-crypt<span class="w"> </span>init
+</code></pre></div>
+<p>Now we want to specify files we want to monitor and handle with <strong>git-crypt</strong>
+That is easy. Therefore we just need to add a <strong>.gitattributes</strong> file with the files we want to encrypt.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;secretfile filter=git-crypt diff=git-crypt\n*.key filter=git-crypt diff=git-crypt\nsecretdir/** filter=git-crypt diff=git-crypt&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitattributes
+</code></pre></div>
+<p>The content of the <strong>.gitattributes</strong> file should look now</p>
+<div class="highlight"><pre><span></span><code>secretfile filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
+secretdir/** filter=git-crypt diff=git-crypt
+</code></pre></div>
+<p>This is like a <strong>.gitignore</strong> file and has the following content.</p>
+<ul>
+<li>handle all files with name secretfile with git-crypt</li>
+<li>handle all files with extension *.key with git-crypt</li>
+<li>handle all files within directory secretdir/ with git-crypt</li>
+</ul>
+<p>Now we add our git user to the secrets. Therefore we need to get the id of our gpg key.</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--list-key<span class="w"> </span><span class="k">$(</span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="k">)</span>
+</code></pre></div>
+<p>(The id is at pub between / and the date).</p>
+<p>Copy it to any text editor.</p>
+<p>Now we add the key to the keyring of the local git repository database.
+Please replace <USER_ID> with the id you copied to the text editor.</p>
+<div class="highlight"><pre><span></span><code>git-crypt<span class="w"> </span>add-gpg-user<span class="w"> </span>&lt;USER_ID&gt;
+</code></pre></div>
+<p>Now we add a file for encryption.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This file will be encrypted&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>to_encrypt.key
+</code></pre></div>
+<p>and commit our changes</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add file to encrypt :lock:&quot;</span>
+</code></pre></div>
+<p>Now lock the file and check it</p>
+<div class="highlight"><pre><span></span><code>git-crypt<span class="w"> </span>lock
+</code></pre></div>
+<p>just check the file</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>to_encrypt.key
+</code></pre></div>
+<p>it is encrypted. For unlocking type</p>
+<div class="highlight"><pre><span></span><code>git-crypt<span class="w"> </span>unlock
+</code></pre></div>
+<p>Check the file again</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>to_encrypt.key
+</code></pre></div>
+<p>The nice thing is that it is not possible to push the unencrypted file to git repo.
+Lets test it.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add encrypted file&quot;</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<p>Check the file in your favourite git provider. You can see that it is encrypted.</p>
+<h3 id="add-users-to-git-crypt-database">Add users to git-crypt database</h3>
+<p>To add a user to git-crypt you need the public gpg file.
+Just tell the other users to use the following command</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--armor<span class="w"> </span>--output<span class="w"> </span>public-key.gpg<span class="w"> </span>--export<span class="w"> </span>&lt;key_mail_address&gt;
+</code></pre></div>
+<p>Import the key file into your gpg keyring and add trust level ultimate</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--import<span class="w"> </span>public-key.gpg
+<span class="c1"># get the id of the imported key</span>
+gpg<span class="w"> </span>--list-key<span class="w"> </span>&lt;key_mail_address&gt;
+gpg<span class="w"> </span>--edit-key<span class="w"> </span>&lt;key_id&gt;
+trust
+<span class="c1"># We need ultimate trust, so choose 5</span>
+save
+</code></pre></div>
+<p>now you are able to add the user as before with</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># the user_id is the id of the user in your public key_ring</span>
+git-crypt<span class="w"> </span>add-gpg-user<span class="w"> </span>&lt;USER_ID&gt;
+</code></pre></div>
+<p>Now the other user is able to decrypt the file with git-crypt in the git repository :rocket:</p>
+<p><a href="https://ko-fi.com/A0A4EKB66"><img alt="ko-fi" src="https://ko-fi.com/img/githubbutton_sm.svg" /></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

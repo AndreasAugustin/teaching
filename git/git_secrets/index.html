@@ -1,0 +1,671 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../git_multi_user/">
+      
+      
+        <link rel="next" href="../git_sign_commits/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>GIT - Prevent accidentaly pushing credentials - teaching</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-prevent-accidentaly-pushing-credentials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="teaching" class="md-header__button md-logo" aria-label="teaching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            teaching
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GIT - Prevent accidentaly pushing credentials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="teaching" class="md-nav__button md-logo" aria-label="teaching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    teaching
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teaching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ts_gts_esbuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Typescript project with gts and esbuild
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_action_sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub actions-template-sync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_crypt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git - share secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_multi_user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GIT - multi user
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GIT - Prevent accidentaly pushing credentials
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    GIT - Prevent accidentaly pushing credentials
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remarks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fun-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fun part
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_sign_commits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git - how and why sign commits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remarks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fun-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fun part
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="git-prevent-accidentaly-pushing-credentials">GIT - Prevent accidentaly pushing credentials</h1>
+<h2 id="abstract">abstract</h2>
+<p>Sometimes by accident people accidentally push credentials or other sensitive information into a git repository.
+For example <strong>AWS_SECRET_ACCESS_KEY</strong> and <strong>AWS_ACCESS_KEY_ID</strong>.
+Obviously bad people are able to find those secrets in the git repository or history using them to e.q. start cryptominers
+in those accounts. That leads to super high costs and bills for the poor person who accidentally pushed those secrets.
+There is a tool which can prevent you doing such mistakes: <a href="https://github.com/awslabs/git-secrets">git-secrets</a></p>
+<h2 id="installation">Installation</h2>
+<p>Please check <a href="https://github.com/awslabs/git-secrets#installing-git-secrets">git secrets installation</a> for your OS. Here I show you the installation for <strong>Linux</strong>.
+Just type the following commands</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:awslabs/git-secrets.git
+<span class="nb">cd</span><span class="w"> </span>git-secrets
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>make<span class="w"> </span>install
+make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<p><img alt="install" src="../../assets/git/git_secrets/install.gif" /></p>
+<h3 id="remarks">Remarks</h3>
+<ul>
+<li>For users with docker knowledge: have prepared a <a href="https://hub.docker.com/repository/docker/andyaugustin/git-secrets">docker image</a> where git-secret is already installed.</li>
+<li><code>docker run -v &lt;local_git_repo&gt;:/home/git-secrets/ andyaugustin/git-secrets:main git-secrets</code></li>
+<li>For uninstallation on <strong>Linux</strong> just remove the copied files again</li>
+</ul>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>/usr/local/bin/git-secrets
+rm<span class="w"> </span>/usr/local/share/man/man1/git-secrets.1
+</code></pre></div>
+<h2 id="fun-part">Fun part</h2>
+<p>Now lets check the power of git-secrets.
+Please keep in mind that you need to enable the tool for every repository. It will install <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">git hooks</a> into your <strong>local</strong> repository.</p>
+<p>For the turorial we will init a git repo first and bootstrap <strong>git-secrets</strong>.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>git-secrets-example
+<span class="nb">cd</span><span class="w"> </span>git-secrets-example
+git<span class="w"> </span>init
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# git-secrets-example&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span><span class="o">[</span>-S<span class="o">]</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;doc(): initial commit :star:&quot;</span>
+git-secrets<span class="w"> </span>--install
+</code></pre></div>
+<p>As stated in the output we got 3 new files added into our local git repository.
+Those will prevent us to accidentally commit secrets to the git database. Lets check one of those files</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>.git/hooks/pre-commit
+<span class="c1">#!/usr/bin/env bash</span>
+git<span class="w"> </span>secrets<span class="w"> </span>--pre_commit_hook<span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>This hook will be run every time in the <strong>local git repo</strong> before the commit is added to the database.
+This means if the mentioned command will have an error, the commit won't be added to the local database.</p>
+<p><img alt="init" src="../../assets/git/git_secrets/init.gif" /></p>
+<p>Now lets understand some more details. For that we will add some fake AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+into our markdown file and lets try to commit it.
+Those keys are really fake, you can try :smiling_imp:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>secrets<span class="w"> </span>--register-aws
+OK
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This is fake aws key id AKIAIOSFODNN7EXAMPLA&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>README.md
+$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-S<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;doc(): accidentally add keys :alien:&quot;</span>
+README.md:4:This<span class="w"> </span>is<span class="w"> </span>fake<span class="w"> </span>aws<span class="w"> </span>key<span class="w"> </span>id<span class="w"> </span>AKIAIOSFODNN7EXAMPLA
+
+<span class="o">[</span>ERROR<span class="o">]</span><span class="w"> </span>Matched<span class="w"> </span>one<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>prohibited<span class="w"> </span>patterns
+
+Possible<span class="w"> </span>mitigations:
+-<span class="w"> </span>Mark<span class="w"> </span><span class="nb">false</span><span class="w"> </span>positives<span class="w"> </span>as<span class="w"> </span>allowed<span class="w"> </span>using:<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>secrets.allowed<span class="w"> </span>...
+-<span class="w"> </span>Mark<span class="w"> </span><span class="nb">false</span><span class="w"> </span>positives<span class="w"> </span>as<span class="w"> </span>allowed<span class="w"> </span>by<span class="w"> </span>adding<span class="w"> </span>regular<span class="w"> </span>expressions<span class="w"> </span>to<span class="w"> </span>.gitallowed<span class="w"> </span>at<span class="w"> </span>repository<span class="s1">&#39;s root directory</span>
+<span class="s1">- List your configured patterns: git config --get-all secrets.patterns</span>
+<span class="s1">- List your configured allowed patterns: git config --get-all secrets.allowed</span>
+<span class="s1">- List your configured allowed patterns in .gitallowed at repository&#39;</span>s<span class="w"> </span>root<span class="w"> </span>directory
+-<span class="w"> </span>Use<span class="w"> </span>--no-verify<span class="w"> </span><span class="k">if</span><span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>one-time<span class="w"> </span><span class="nb">false</span><span class="w"> </span>positive
+</code></pre></div>
+<p>As you can see it is not possible to commit the changes to the git history because there is a AWS KEY in the change.
+In some cases you want to commit that key. Maybe because it is an example for a tutorial or anything else.
+This is quite easy to establish. Just add the key to a file called <strong>.gitallowed</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;AKIAIOSFODNN7EXAMPLA&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitallowed
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span><span class="o">[</span>-S<span class="o">]</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;doc(): now we are able to establish the commit :star:&quot;</span>
+</code></pre></div>
+<p><img alt="example-usage" src="../../assets/git/git_secrets/example_usage.gif" /></p>
+<p><a href="https://ko-fi.com/A0A4EKB66"><img alt="ko-fi" src="https://ko-fi.com/img/githubbutton_sm.svg" /></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
